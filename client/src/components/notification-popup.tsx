@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { Clock, Brain, Save, X, BarChart3, Settings } from "lucide-react";
+import { Clock, Save, X, BarChart3, Settings } from "lucide-react";
 import { getCategoryIcon } from "@/lib/utils";
 
 interface NotificationPopupProps {
@@ -16,11 +16,7 @@ interface NotificationPopupProps {
   onOpenSettings: () => void;
 }
 
-interface CategorySuggestion {
-  category: string;
-  confidence: number;
-  reasoning: string;
-}
+// Removed AI interfaces
 
 const CATEGORIES = [
   { id: "work", label: "Work", icon: "fas fa-briefcase", color: "emerald" },
@@ -36,8 +32,7 @@ export default function NotificationPopup({ isVisible, onClose, onOpenDashboard,
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [aiSuggestion, setAiSuggestion] = useState<CategorySuggestion | null>(null);
-  const [isAiProcessing, setIsAiProcessing] = useState(false);
+  // Removed AI features
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -87,29 +82,7 @@ export default function NotificationPopup({ isVisible, onClose, onOpenDashboard,
     hour12: true
   });
 
-  useEffect(() => {
-    if (description.trim() && description.length > 3) {
-      const timeoutId = setTimeout(async () => {
-        setIsAiProcessing(true);
-        try {
-          const response = await apiRequest("POST", "/api/categorize", { description });
-          const suggestion = await response.json();
-          setAiSuggestion(suggestion);
-          
-          // Auto-select AI suggested category if confidence is high
-          if (suggestion.confidence > 0.7) {
-            setSelectedCategory(suggestion.category);
-          }
-        } catch (error) {
-          console.error("Failed to get AI suggestion:", error);
-        } finally {
-          setIsAiProcessing(false);
-        }
-      }, 1000);
-
-      return () => clearTimeout(timeoutId);
-    }
-  }, [description]);
+  // Removed AI categorization
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -149,7 +122,6 @@ export default function NotificationPopup({ isVisible, onClose, onOpenDashboard,
         duration: durationHours,
         startTime: startDateTime.toISOString(),
         endTime: endDateTime.toISOString(),
-        aiSuggested: aiSuggestion?.category || null,
       });
       
       const response = await apiRequest("POST", "/api/activities", {
@@ -158,7 +130,6 @@ export default function NotificationPopup({ isVisible, onClose, onOpenDashboard,
         duration: durationHours,
         startTime: startDateTime.toISOString(),
         endTime: endDateTime.toISOString(),
-        aiSuggested: aiSuggestion?.category || null,
       });
 
       console.log("Activity created:", response);
@@ -173,7 +144,7 @@ export default function NotificationPopup({ isVisible, onClose, onOpenDashboard,
       setStartTime("");
       setEndTime("");
       setSelectedCategory("");
-      setAiSuggestion(null);
+      // Form reset complete
       
       // Trigger a refresh of activities data if on dashboard
       if (typeof window !== 'undefined' && window.location.pathname === '/dashboard') {
@@ -264,34 +235,12 @@ export default function NotificationPopup({ isVisible, onClose, onOpenDashboard,
               </div>
             </div>
 
-            {/* AI Category Suggestions */}
+            {/* Category Selection */}
             <div>
               <Label className="text-sm font-medium text-gray-200">
                 Category
-                <span className="text-xs text-gray-400 ml-1">(AI Suggested)</span>
               </Label>
               
-              {/* AI Loading State */}
-              {isAiProcessing && (
-                <div className="mb-2 p-2 bg-blue-900/50 rounded-lg border border-blue-700 animate-pulse" data-testid="ai-processing">
-                  <div className="flex items-center text-sm text-blue-300">
-                    <Brain className="w-4 h-4 mr-2 animate-pulse" />
-                    <span>AI is analyzing your activity...</span>
-                  </div>
-                </div>
-              )}
-
-              {/* AI Suggestion Display */}
-              {aiSuggestion && !isAiProcessing && (
-                <div className="mb-2 p-2 bg-emerald-900/50 rounded-lg border border-emerald-700" data-testid="ai-suggestion">
-                  <div className="flex items-center text-sm text-emerald-300">
-                    <Brain className="w-4 h-4 mr-2" />
-                    <span>AI suggests: <strong className="text-emerald-200">{aiSuggestion.category}</strong> ({Math.round(aiSuggestion.confidence * 100)}% confidence)</span>
-                  </div>
-                  <p className="text-xs text-emerald-400 mt-1">{aiSuggestion.reasoning}</p>
-                </div>
-              )}
-
               {/* Category Buttons */}
               <div className="grid grid-cols-2 gap-2 mt-2">
                 {CATEGORIES.map((category) => (
