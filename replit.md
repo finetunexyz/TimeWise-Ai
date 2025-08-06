@@ -41,14 +41,11 @@ Preferred communication style: Simple, everyday language.
 - **Demo Mode**: Default demo user for simplified onboarding
 - **Security**: Basic validation and sanitization
 
-### AI Integration Architecture
-- **Provider**: OpenAI GPT-4o model for intelligent categorization
-- **Services**: Dedicated OpenAI service layer for API interactions
-- **Features**: 
-  - Automatic activity categorization with confidence scoring
-  - Productivity insights generation
-  - Category suggestions with reasoning
-- **Error Handling**: Graceful fallbacks when AI services are unavailable
+### Smart Categorization System
+- **Keyword-based Classification**: Simple, fast activity categorization
+- **Context Detection**: URL and page title analysis for browser extension
+- **Category Suggestions**: Intelligent suggestions based on description patterns
+- **Fallback Methods**: Multiple categorization approaches for accuracy
 
 ### Component Architecture
 - **Design System**: Consistent component library with shadcn/ui
@@ -62,16 +59,21 @@ Preferred communication style: Simple, everyday language.
 - **Build Process**: Separate client and server builds with ESBuild
 - **Asset Handling**: Vite-based asset optimization and bundling
 - **Development Tools**: Hot reload, error overlays, and debugging support
+- **Browser Extension**: Complete Manifest V3 extension with service worker
+- **GitHub Integration**: Automated deployment and extension packaging
+- **Multi-Platform**: Web app, browser extension, and potential mobile support
 
 ## External Dependencies
 
 ### Database Services
-- **Neon Database**: Serverless PostgreSQL hosting
+- **Neon Database**: Serverless PostgreSQL hosting (optional)
 - **Connection Pool**: @neondatabase/serverless for optimized connections
+- **In-Memory Storage**: Primary storage for fast development and deployment
 
-### AI and Machine Learning
-- **OpenAI API**: GPT-4o model for text analysis and categorization
-- **Natural Language Processing**: Activity description analysis and categorization
+### Browser Extension Platform
+- **Chrome Extensions API**: Manifest V3 for modern extension development
+- **Firefox WebExtensions**: Cross-browser compatibility
+- **Browser Storage API**: Local data persistence for offline functionality
 
 ### UI and Design
 - **Radix UI**: Comprehensive primitive components for accessibility
