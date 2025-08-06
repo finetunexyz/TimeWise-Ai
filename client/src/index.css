@@ -5,6 +5,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Force dark mode globally */
+html {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-gray-900 text-white;
+}
+
 :root {
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(20, 14.3%, 4.1%);

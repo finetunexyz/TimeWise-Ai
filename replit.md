@@ -1,8 +1,8 @@
-# TimeTracker Pro - AI-Powered Time Tracking Application
+# TimeWise - Smart Hourly Check-ins Application
 
 ## Overview
 
-TimeTracker Pro is a full-stack web application built for tracking daily activities with AI-powered categorization and insights. The application features a React-based frontend with a modern UI using shadcn/ui components, an Express.js backend with RESTful APIs, and PostgreSQL database integration through Drizzle ORM. The system includes intelligent activity categorization using OpenAI's GPT-4o model, real-time notifications, and comprehensive analytics dashboards.
+TimeWise is a smart hourly check-in application that visualizes your day, tracks productivity, and helps make every hour count. The application features hourly browser notifications for activity logging, a React-based frontend with dark mode UI using shadcn/ui components, an Express.js backend with RESTful APIs, and in-memory storage for fast prototyping. The system includes keyword-based activity categorization, browser notifications, and comprehensive analytics dashboards.
 
 ## User Preferences
 

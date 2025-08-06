@@ -23,10 +23,11 @@ export default function Home({ onNavigateToDashboard }: HomeProps) {
   };
 
   const handleTestNotification = () => {
+    setShowNotificationPopup(true);
     showActivityReminder();
     toast({
       title: "Test notification sent",
-      description: "Check your browser notifications!",
+      description: "Check your browser notifications and popup!",
     });
   };
 
@@ -37,10 +38,10 @@ export default function Home({ onNavigateToDashboard }: HomeProps) {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-3 mb-4">
             <Clock className="w-8 h-8 text-primary" />
-            <h1 className="text-4xl font-bold text-foreground">TimeTracker Pro</h1>
+            <h1 className="text-4xl font-bold text-foreground">TimeWise</h1>
           </div>
           <p className="text-lg text-muted-foreground">
-            AI-powered time tracking with smart insights and hourly reminders
+            Smart hourly check-ins that visualize your day, track your productivity, and help you make every hour count.
           </p>
         </div>
 
@@ -98,26 +99,30 @@ export default function Home({ onNavigateToDashboard }: HomeProps) {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground mb-4">
-                {isEnabled ? "Hourly reminders are active" : "Enable hourly reminders"}
+                Smart hourly check-ins help you track time effectively
               </p>
-              {isEnabled ? (
+              <div className="space-y-2">
+                {!isEnabled && (
+                  <Button 
+                    onClick={handleEnableNotifications} 
+                    className="w-full"
+                    data-testid="button-enable-notifications"
+                  >
+                    Enable Hourly Reminders
+                  </Button>
+                )}
                 <Button 
                   onClick={handleTestNotification} 
                   variant="outline" 
                   className="w-full"
                   data-testid="button-test-notification"
                 >
-                  Test Notification
+                  Test Hourly Reminder
                 </Button>
-              ) : (
-                <Button 
-                  onClick={handleEnableNotifications} 
-                  className="w-full"
-                  data-testid="button-enable-notifications"
-                >
-                  Enable Notifications
-                </Button>
-              )}
+                {isEnabled && (
+                  <p className="text-xs text-green-400 text-center">✓ Browser notifications enabled</p>
+                )}
+              </div>
             </CardContent>
           </Card>
         </div>
