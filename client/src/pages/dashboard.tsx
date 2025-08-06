@@ -120,7 +120,7 @@ export default function Dashboard({ onNavigateToHome }: DashboardProps) {
                     Back to Home
                   </Button>
                 </div>
-                <h1 className="text-3xl font-bold text-foreground">TimeTracker Pro Dashboard</h1>
+                <h1 className="text-3xl font-bold text-foreground">TimeWise Dashboard</h1>
                 <p className="text-muted-foreground">Track, analyze, and optimize your daily productivity</p>
               </div>
               <div className="flex items-center space-x-4">
@@ -267,10 +267,10 @@ export default function Dashboard({ onNavigateToHome }: DashboardProps) {
               {/* Legend */}
               {activities.length > 0 && viewMode === 'chart' && (
                 <div className="mt-6 grid grid-cols-2 gap-4">
-                  {Array.from(new Set(activities.map(a => a.category))).map(category => {
+                  {Array.from(new Set(activities.map((a: any) => a.category))).map((category: string) => {
                     const totalTime = activities
-                      .filter(a => a.category === category)
-                      .reduce((sum, a) => sum + a.duration, 0);
+                      .filter((a: any) => a.category === category)
+                      .reduce((sum: number, a: any) => sum + a.duration, 0);
                     
                     return (
                       <div key={category} className="flex items-center" data-testid={`legend-${category}`}>
@@ -303,9 +303,9 @@ export default function Dashboard({ onNavigateToHome }: DashboardProps) {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {Array.from(new Set(activities.map(a => a.category))).map(category => {
-                    const categoryActivities = activities.filter(a => a.category === category);
-                    const totalTime = categoryActivities.reduce((sum, a) => sum + a.duration, 0);
+                  {Array.from(new Set(activities.map((a: any) => a.category))).map((category: string) => {
+                    const categoryActivities = activities.filter((a: any) => a.category === category);
+                    const totalTime = categoryActivities.reduce((sum: number, a: any) => sum + a.duration, 0);
                     const percentage = stats ? (totalTime / stats.totalTime) * 100 : 0;
                     
                     return (

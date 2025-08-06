@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import NotificationPopup from "@/components/notification-popup";
-import ActivityForm from "@/components/activity-form";
+
 import SettingsModal from "@/components/settings-modal";
 import { useNotifications } from "@/hooks/use-notifications";
 import { useToast } from "@/hooks/use-toast";
@@ -72,7 +72,7 @@ export default function Home({ onNavigateToDashboard }: HomeProps) {
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 <BarChart3 className="w-5 h-5" />
-                <span>Analytics</span>
+                <span>My Analytics</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -85,7 +85,7 @@ export default function Home({ onNavigateToDashboard }: HomeProps) {
                 className="w-full"
                 data-testid="button-view-dashboard"
               >
-                View Dashboard
+                My TimeWise Dashboard
               </Button>
             </CardContent>
           </Card>
@@ -94,7 +94,7 @@ export default function Home({ onNavigateToDashboard }: HomeProps) {
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 {isEnabled ? <Bell className="w-5 h-5" /> : <BellOff className="w-5 h-5" />}
-                <span>Notifications</span>
+                <span>Hourly Check-ins</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -127,18 +127,15 @@ export default function Home({ onNavigateToDashboard }: HomeProps) {
           </Card>
         </div>
 
-        {/* Activity Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <ActivityForm />
-          
-          {/* Getting Started */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Getting Started</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium">
+        {/* How It Works */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>How TimeWise Works</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="text-center space-y-3">
+                <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-lg font-bold mx-auto">
                   1
                 </div>
                 <div>
@@ -149,42 +146,32 @@ export default function Home({ onNavigateToDashboard }: HomeProps) {
                 </div>
               </div>
               
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium">
+              <div className="text-center space-y-3">
+                <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-lg font-bold mx-auto">
                   2
                 </div>
                 <div>
                   <p className="font-medium">Log Activities</p>
                   <p className="text-sm text-muted-foreground">
-                    Track what you're working on with AI-powered categorization
+                    Track what you're working on when prompted
                   </p>
                 </div>
               </div>
               
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium">
+              <div className="text-center space-y-3">
+                <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-lg font-bold mx-auto">
                   3
                 </div>
                 <div>
-                  <p className="font-medium">Analyze Insights</p>
+                  <p className="font-medium">Analyze & Optimize</p>
                   <p className="text-sm text-muted-foreground">
-                    View charts and get AI-powered productivity insights
+                    View insights to make every hour count
                   </p>
                 </div>
               </div>
-
-              <Button 
-                onClick={() => setShowSettings(true)} 
-                variant="outline" 
-                className="w-full mt-4"
-                data-testid="button-open-settings"
-              >
-                <Settings className="w-4 h-4 mr-2" />
-                Configure Settings
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Modals */}
         <NotificationPopup
