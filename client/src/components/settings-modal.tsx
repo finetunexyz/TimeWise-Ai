@@ -58,14 +58,14 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   useEffect(() => {
     if (settings) {
       setFormData({
-        hourlyReminders: settings.hourlyReminders === "true",
-        weekendNotifications: settings.weekendNotifications === "true",
-        soundNotifications: settings.soundNotifications === "true",
-        workStart: settings.workStart || "09:00",
-        workEnd: settings.workEnd || "17:00",
-        aiCategorization: settings.aiCategorization === "true",
-        aiInsights: settings.aiInsights === "true",
-        aiSuggestions: settings.aiSuggestions === "true",
+        hourlyReminders: (settings as any).hourlyReminders === "true",
+        weekendNotifications: (settings as any).weekendNotifications === "true",
+        soundNotifications: (settings as any).soundNotifications === "true",
+        workStart: (settings as any).workStart || "09:00",
+        workEnd: (settings as any).workEnd || "17:00",
+        aiCategorization: (settings as any).aiCategorization === "true",
+        aiInsights: (settings as any).aiInsights === "true",
+        aiSuggestions: (settings as any).aiSuggestions === "true",
       });
     }
   }, [settings]);

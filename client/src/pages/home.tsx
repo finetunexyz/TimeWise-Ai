@@ -7,6 +7,7 @@ import SettingsModal from "@/components/settings-modal";
 import { useNotifications } from "@/hooks/use-notifications";
 import { useToast } from "@/hooks/use-toast";
 import { Clock, Bell, BellOff, BarChart3, Settings } from "lucide-react";
+import logoImage from "@/assets/logo.png";
 
 interface HomeProps {
   onNavigateToDashboard: () => void;
@@ -37,7 +38,7 @@ export default function Home({ onNavigateToDashboard }: HomeProps) {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <Clock className="w-8 h-8 text-primary" />
+            <img src={logoImage} alt="TimeWise Logo" className="w-10 h-10" />
             <h1 className="text-4xl font-bold text-foreground">TimeWise</h1>
           </div>
           <p className="text-lg text-muted-foreground">
@@ -81,7 +82,6 @@ export default function Home({ onNavigateToDashboard }: HomeProps) {
               </p>
               <Button 
                 onClick={onNavigateToDashboard} 
-                variant="outline" 
                 className="w-full"
                 data-testid="button-view-dashboard"
               >

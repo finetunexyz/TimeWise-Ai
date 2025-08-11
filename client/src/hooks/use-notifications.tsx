@@ -73,7 +73,7 @@ export function useNotifications() {
     if (!isEnabled) return;
 
     // Clear any existing intervals
-    const existingInterval = window.hourlyReminderInterval;
+    const existingInterval = (window as any).hourlyReminderInterval;
     if (existingInterval) {
       clearInterval(existingInterval);
     }

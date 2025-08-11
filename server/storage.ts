@@ -68,6 +68,7 @@ export class MemStorage implements IStorage {
       ...activityData,
       id,
       createdAt: new Date(),
+      aiSuggested: activityData.aiSuggested || null,
     };
     this.activities.set(id, activity);
     return activity;
@@ -95,7 +96,18 @@ export class MemStorage implements IStorage {
 
   async createSettings(settingsData: InsertSettings & { userId: string }): Promise<Settings> {
     const id = randomUUID();
-    const settings: Settings = { ...settingsData, id };
+    const settings: Settings = { 
+      ...settingsData, 
+      id,
+      hourlyReminders: settingsData.hourlyReminders || null,
+      weekendNotifications: settingsData.weekendNotifications || null,
+      soundNotifications: settingsData.soundNotifications || null,
+      workStart: settingsData.workStart || null,
+      workEnd: settingsData.workEnd || null,
+      aiCategorization: settingsData.aiCategorization || null,
+      aiInsights: settingsData.aiInsights || null,
+      aiSuggestions: settingsData.aiSuggestions || null,
+    };
     this.settings.set(id, settings);
     return settings;
   }

@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertActivitySchema, insertSettingsSchema } from "@shared/schema";
-// Removed OpenAI dependencies
+
 
 function getMostProductiveCategory(activities: any[]) {
   const categoryHours = activities.reduce((acc, activity) => {
@@ -11,7 +11,7 @@ function getMostProductiveCategory(activities: any[]) {
   }, {} as Record<string, number>);
   
   return Object.entries(categoryHours)
-    .sort(([,a], [,b]) => b - a)[0]?.[0] || 'none';
+    .sort(([,a], [,b]) => (b as number) - (a as number))[0]?.[0] || 'none';
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -19,7 +19,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Activity routes
   app.post("/api/activities", async (req, res) => {
     try {
-      // Convert string dates to Date objects before validation
+      
       const requestData = {
         ...req.body,
         startTime: req.body.startTime ? new Date(req.body.startTime) : undefined,

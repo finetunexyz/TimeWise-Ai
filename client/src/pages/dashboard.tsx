@@ -267,7 +267,7 @@ export default function Dashboard({ onNavigateToHome }: DashboardProps) {
               {/* Legend */}
               {activities.length > 0 && viewMode === 'chart' && (
                 <div className="mt-6 grid grid-cols-2 gap-4">
-                  {Array.from(new Set(activities.map((a: any) => a.category))).map((category: string) => {
+                  {Array.from(new Set(activities.map((a: any) => a.category)) as Set<string>).map((category: string) => {
                     const totalTime = activities
                       .filter((a: any) => a.category === category)
                       .reduce((sum: number, a: any) => sum + a.duration, 0);
@@ -303,7 +303,7 @@ export default function Dashboard({ onNavigateToHome }: DashboardProps) {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {Array.from(new Set(activities.map((a: any) => a.category))).map((category: string) => {
+                  {Array.from(new Set(activities.map((a: any) => a.category)) as Set<string>).map((category: string) => {
                     const categoryActivities = activities.filter((a: any) => a.category === category);
                     const totalTime = categoryActivities.reduce((sum: number, a: any) => sum + a.duration, 0);
                     const percentage = stats ? (totalTime / stats.totalTime) * 100 : 0;

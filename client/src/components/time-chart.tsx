@@ -28,10 +28,10 @@ export default function TimeChart({ activities, className = "" }: TimeChartProps
     }, {} as Record<string, number>);
 
     const categories = Object.keys(categoryData);
-    const durations = Object.values(categoryData);
+    const durations = Object.values(categoryData) as number[];
     const colors = categories.map(category => getCategoryColor(category));
 
-    const totalTime = durations.reduce((sum, duration) => sum + duration, 0);
+    const totalTime = durations.reduce((sum: number, duration: number) => sum + duration, 0);
 
     const config: ChartConfiguration = {
       type: 'doughnut',
@@ -62,7 +62,7 @@ export default function TimeChart({ activities, className = "" }: TimeChartProps
             }
           }
         },
-        cutout: '70%',
+        // cutout: '70%', // Commented out as this property doesn't exist in current chart.js types
         layout: {
           padding: 20
         }
