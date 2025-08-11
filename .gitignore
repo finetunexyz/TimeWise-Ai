@@ -92,9 +92,7 @@ tmp/
 temp/
 
 # Browser extension build artifacts
-browser-extension/dist/
-browser-extension/*.crx
-browser-extension/*.pem
+browser-extension/
 
 # Replit specific
 .replit
