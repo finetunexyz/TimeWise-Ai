@@ -56,12 +56,6 @@
 - **Quick access** to full web dashboard
 - **Settings panel** for notification preferences
 
-### 🔗 Context Awareness
-- **URL tracking** to understand work patterns
-- **Smart suggestions** for activity categories
-- **Page title analysis** for better activity descriptions
-- **Work site detection** for automatic work categorization
-
 ### Categories
 - **Work**: Professional tasks, meetings, coding, emails
 - **Personal**: Family time, personal projects
