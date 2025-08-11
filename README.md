@@ -22,7 +22,6 @@
 - **Quick activity logging** with category-based organization
 - **Smart categorization** based on keywords and context
 - **Time range selection** with 30-minute intervals
-- **Automatic URL tracking** to understand work context
 
 ### 📈 Analytics & Insights
 - **24-hour visualization** with interactive charts and timeline view
@@ -53,7 +52,7 @@
 ### 📊 Mini Dashboard
 - **Today's summary** showing time distribution
 - **Category breakdown** with visual indicators
-- **Quick access** to full web dashboard
+- **Quick access** to full web dashboard 
 - **Settings panel** for notification preferences
 
 ### Categories
