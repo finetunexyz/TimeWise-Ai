@@ -7,6 +7,7 @@ yarn-error.log*
 # Production builds
 dist/
 build/
+api/
 .next/
 
 # Environment variables
